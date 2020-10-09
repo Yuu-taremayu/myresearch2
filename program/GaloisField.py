@@ -1,12 +1,13 @@
 class GF():
     def __init__(self, x):
-        sel.value = x
+        self.value = x
     
     #
     # set modulo number
     #
-    def set_space(space):
-        GF.space = 5
+    space = 5
+    def set_space(num):
+        GF.space = num
 
     #
     # overload of operands
@@ -14,42 +15,42 @@ class GF():
     def __add__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.add(self.value, y.value, space))
+        return (GF.add(self.value, y.value, GF.space))
 
     def __sub__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.sub(self.value, y.value, space))
+        return (GF.sub(self.value, y.value, GF.space))
 
     def __mul__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.mul(self.value, y.value, space))
+        return (GF.mul(self.value, y.value, GF.space))
 
     def __truediv__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.mul(self.value, y.value, space))
+        return (GF.mul(self.value, y.value, GF.space))
 
     def __radd__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.add(self.value, y.value, space))
+        return (GF.add(self.value, y.value, GF.space))
 
     def __rsub__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.sub(self.value, y.value, space))
+        return (GF.sub(self.value, y.value, GF.space))
 
     def __rmul__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.mul(self.value, y.value, space))
+        return (GF.mul(self.value, y.value, GF.space))
 
     def __rtruediv__(self, y):
         if type(y) is int:
             y = GF(y)
-        return (GF.mul(self.value, y.value, space))
+        return (GF.mul(self.value, y.value, GF.space))
 
     #
     # calculation
