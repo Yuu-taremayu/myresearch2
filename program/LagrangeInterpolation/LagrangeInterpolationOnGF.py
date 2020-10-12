@@ -1,6 +1,5 @@
 from GaloisField import GF
 import random
-import matplotlib.pyplot as plt
 
 def base_polynomial(data_num, i, x, dataX):
     l = 1
