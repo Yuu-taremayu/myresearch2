@@ -19,8 +19,9 @@ def lagrange_interpolation(data_num, x, dataX, dataY):
 
 def main():
     dataX = [GF(0.0), GF(1.0)]
-    dataY = [GF(0.0), GF(3.0)]
+    dataY = [GF(0.0), GF(1.0)]
     data_num = len(dataX)
+    GF.space = 121
     x = GF(122.0)
     y = lagrange_interpolation(data_num, x, dataX, dataY)
     print(y)
