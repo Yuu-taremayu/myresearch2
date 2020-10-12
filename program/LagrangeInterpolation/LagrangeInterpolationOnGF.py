@@ -1,6 +1,9 @@
 from GaloisField import GF
 import random
 
+#
+# calculation of Lagrange base polynomial
+#
 def base_polynomial(data_num, i, x, dataX):
     l = 1
     for k in range(data_num):
@@ -8,6 +11,9 @@ def base_polynomial(data_num, i, x, dataX):
             l *= x - dataX[k]
     return l
 
+#
+# calculation of Lagrange Interpolation using base polynomial
+#
 def lagrange_interpolation(data_num, x, dataX, dataY):
     l = 0
     L = 0
@@ -17,8 +23,15 @@ def lagrange_interpolation(data_num, x, dataX, dataY):
     return L
 
 def main():
+    #
+    # define variables
+    #
     dataX = []
     dataY = []
+
+    #
+    # set values
+    #
     random.seed(0)
     dataX = [GF(i) for i in range(3)]
     dataY = [GF(random.randint(0, 10)) for i in range(3)]
@@ -26,6 +39,10 @@ def main():
         print(f'(x_{i}, y_{i}) = ({dataX[i].value}, {dataY[i].value})')
     data_num = len(dataX)
     GF.space = 5
+
+    #
+    # calculation
+    #
     x = GF(122.0)
     y = lagrange_interpolation(data_num, x, dataX, dataY)
     print(f'x_orig = {x.value}')
