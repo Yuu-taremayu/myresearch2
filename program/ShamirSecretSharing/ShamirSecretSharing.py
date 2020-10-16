@@ -1,32 +1,49 @@
 from GaloisField import GF
 import random
 
+#
+# generate server ids
+#
+def generate_server_id(n, p):
+    server_id = [random.randint(0, p - 1) for i in range(n)]
+    while len(server_id) != len(set(server_id)):
+        server_id = [random.randint(0, p - 1) for i in range(n)]
+    print(f'server_id = {server_id}')
+    return server_id
+
+#
+# generate coefficient of polynomial
+#
+def generate_polynomial(s, k, p):
+    f_x = [s]
+    for i in range(k - 1):
+        f_x.append(random.randint(0, p - 1))
+    print(f'f_x = {f_x}')
+    return f_x
+
+#
+# create share
+#
+def create_share(server_id, f_x):
+    share = 0
+    for i in range(len(f_x)):
+        share += f_x[i] * server_id[1] ** i
+    print(f'share = {share}')
+
 def main():
     #
     # define some constant
+    # s:secret k:key num n:share num p:prime
     #
     s = 1
     k = 2
     n = 3
     p = 5
-    GF.space = p
     random.seed(0)
-    
-    #
-    # generate server ids
-    #
-    server_id = [random.randint(0, p - 1) for i in range(n)]
-    while len(server_id) != len(set(server_id)):
-        server_id = [random.randint(0, p - 1) for i in range(n)]
-    print(f'server_id = {server_id}')
 
-    #
-    # generate coefficient of polynomial
-    #
-    f_x = [s]
-    for i in range(k - 1):
-        f_x.append(random.randint(0, p - 1))
-    print(f'f_x = {f_x}')
+    server_id = generate_server_id(n, p)
+    f_x = generate_polynomial(s, k, p)
+    create_share(server_id, f_x)
 
 if __name__ == '__main__':
     main()
