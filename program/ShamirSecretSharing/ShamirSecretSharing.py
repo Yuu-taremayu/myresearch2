@@ -5,10 +5,12 @@ import random
 # generate server ids
 #
 def generate_server_id(n, p):
-    server_id = [random.randint(0, p - 1) for i in range(n)]
-    while len(server_id) != len(set(server_id)):
-        server_id = [random.randint(0, p - 1) for i in range(n)]
-    print(f'server_id = {server_id}')
+    server_id = [i + 1 for i in range(p - 1)]
+    random.shuffle(server_id)
+    print(server_id)
+    for i in range(p - n):
+        server_id.pop(0)
+    print(server_id)
     return server_id
 
 #
@@ -25,10 +27,15 @@ def generate_polynomial(s, k, p):
 # create share
 #
 def create_share(server_id, f_x):
-    share = 0
-    for i in range(len(f_x)):
-        share += f_x[i] * server_id[1] ** i
-    print(f'share = {share}')
+    w = []
+    for i in server_id:
+        share = 0
+        for j in range(len(f_x)):
+            share += f_x[j] * i ** j
+        w.append(share)
+        print(f'share = {share}')
+
+    return w
 
 def main():
     #
@@ -43,7 +50,7 @@ def main():
 
     server_id = generate_server_id(n, p)
     f_x = generate_polynomial(s, k, p)
-    create_share(server_id, f_x)
+    w = create_share(server_id, f_x)
 
 if __name__ == '__main__':
     main()
