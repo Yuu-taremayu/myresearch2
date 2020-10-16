@@ -26,7 +26,7 @@ def main():
     f_x = [s]
     for i in range(k - 1):
         f_x.append(random.randint(0, p - 1))
-    print(f'f_x = {f_x}'
+    print(f'f_x = {f_x}')
 
 if __name__ == '__main__':
     main()
