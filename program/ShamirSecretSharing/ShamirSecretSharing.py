@@ -1,4 +1,3 @@
-from GaloisField import GF
 import random
 
 #
