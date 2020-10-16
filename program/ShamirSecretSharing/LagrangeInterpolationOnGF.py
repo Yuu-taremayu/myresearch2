@@ -1,4 +1,3 @@
-from GaloisField import GF
 import random
 
 def base_polynomial(data_num, i, x, dataX):
@@ -8,7 +7,9 @@ def base_polynomial(data_num, i, x, dataX):
             l *= x - dataX[k]
     return l
 
-def lagrange_interpolation(data_num, x, dataX, dataY):
+def lagrange_interpolation(dataX, dataY):
+    data_num = len(dataX)
+    x = 0
     l = 0
     L = 0
     for i in range(data_num):
