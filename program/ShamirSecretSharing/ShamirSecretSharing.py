@@ -39,13 +39,6 @@ def create_share(server_id, f_x):
 #
 # calculation of Lagrange Interpolation
 #
-def base_polynomial(data_num, i, x, dataX):
-    l = 1
-    for k in range(data_num):
-        if i != k:
-            l *= x - dataX[k]
-    return l
-
 def lagrange_interpolation(dataX, dataY):
     data_num = len(dataX)
     x = 0
@@ -55,6 +48,13 @@ def lagrange_interpolation(dataX, dataY):
         l = base_polynomial(data_num, i, x, dataX) / base_polynomial(data_num, i, dataX[i], dataX)
         L += dataY[i] * l
     return L
+
+def base_polynomial(data_num, i, x, dataX):
+    l = 1
+    for k in range(data_num):
+        if i != k:
+            l *= x - dataX[k]
+    return l
 
 def main():
     #
