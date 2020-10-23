@@ -6,7 +6,7 @@ import random
 def generate_server_id(n, p):
     server_id = [i + 1 for i in range(p - 1)]
     random.shuffle(server_id)
-    print(f'elements of GF({p}) without 0 = {server_id}')
+    print(f'shuffled elements of GF({p}) without 0 = {server_id}')
     for i in range(p - n):
         server_id.pop(0)
     print(f'server ids = {server_id}')
