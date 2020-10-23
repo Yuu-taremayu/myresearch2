@@ -4,9 +4,9 @@ import random
 # generate server ids
 #
 def generate_server_id(n, p):
-    server_id = [i for i in range(p)]
+    server_id = [i + 1 for i in range(p - 1)]
     random.shuffle(server_id)
-    print(f'elements of GF({p}) = {server_id}')
+    print(f'elements of GF({p}) without 0 = {server_id}')
     for i in range(p - n):
         server_id.pop(0)
     print(f'server ids = {server_id}')
@@ -44,8 +44,12 @@ def lagrange_interpolation(dataX, dataY, p):
     l = 0
     L = 0
     for i in range(data_num):
-        l = base_polynomial(data_num, i, x, dataX, p) / base_polynomial(data_num, i, dataX[i], dataX, p)
+        l1 = base_polynomial(data_num, i, x, dataX, p)
+        l2 = base_polynomial(data_num, i, dataX[i], dataX, p)
+        temp1, l2_inv, temp2 = xgcd(l2, p)
+        l = l1 * l2_inv
         L += dataY[i] * l
+    L = L % p
     return L
 
 def base_polynomial(data_num, i, x, dataX, p):
@@ -53,7 +57,7 @@ def base_polynomial(data_num, i, x, dataX, p):
     for k in range(data_num):
         if i != k:
             l *= x - dataX[k]
-            l = l % p
+    l = l % p
     return l
 
 def xgcd(a, b):
@@ -78,6 +82,12 @@ def main():
     server_id = generate_server_id(n, p)
     f_x = generate_polynomial(s, k, p)
     w = create_share(server_id, f_x)
+    L = lagrange_interpolation(server_id, w, p)
+    print(f'L = {L} (= s)')
+    if s == L:
+        print('success!')
+    else:
+        print('failed...')
 
 if __name__ == '__main__':
     main()
