@@ -4,12 +4,12 @@ import random
 # generate server ids
 #
 def generate_server_id(n, p):
-    server_id = [i + 1 for i in range(p - 1)]
+    server_id = [i for i in range(p)]
     random.shuffle(server_id)
-    print(server_id)
+    print(f'elements of GF({p}) = {server_id}')
     for i in range(p - n):
         server_id.pop(0)
-    print(server_id)
+    print(f'server ids = {server_id}')
     return server_id
 
 #
@@ -32,29 +32,36 @@ def create_share(server_id, f_x):
         for j in range(len(f_x)):
             share += f_x[j] * i ** j
         w.append(share)
-        print(f'share = {share}')
-
+    print(f'shares = {w}')
     return w
 
 #
 # calculation of Lagrange Interpolation
 #
-def lagrange_interpolation(dataX, dataY):
+def lagrange_interpolation(dataX, dataY, p):
     data_num = len(dataX)
     x = 0
     l = 0
     L = 0
     for i in range(data_num):
-        l = base_polynomial(data_num, i, x, dataX) / base_polynomial(data_num, i, dataX[i], dataX)
+        l = base_polynomial(data_num, i, x, dataX, p) / base_polynomial(data_num, i, dataX[i], dataX, p)
         L += dataY[i] * l
     return L
 
-def base_polynomial(data_num, i, x, dataX):
+def base_polynomial(data_num, i, x, dataX, p):
     l = 1
     for k in range(data_num):
         if i != k:
             l *= x - dataX[k]
+            l = l % p
     return l
+
+def xgcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        g, y, x = xgcd(b % a, a)
+        return g, x - (b // a) * y, y
 
 def main():
     #
@@ -67,6 +74,7 @@ def main():
     p = 5
     random.seed(0)
 
+    print(f'GF({p})')
     server_id = generate_server_id(n, p)
     f_x = generate_polynomial(s, k, p)
     w = create_share(server_id, f_x)
