@@ -25,12 +25,13 @@ def generate_polynomial(s, k, p):
 #
 # create share
 #
-def create_share(server_id, f_x):
+def create_share(server_id, f_x, p):
     w = []
     for i in server_id:
         share = 0
         for j in range(len(f_x)):
             share += f_x[j] * i ** j
+        share %= p
         w.append(share)
     print(f'shares = {w}')
     return w
@@ -49,7 +50,7 @@ def lagrange_interpolation(dataX, dataY, p):
         temp1, l2_inv, temp2 = xgcd(l2, p)
         l = l1 * l2_inv
         L += dataY[i] * l
-    L = L % p
+    L %= p
     return L
 
 def base_polynomial(data_num, i, x, dataX, p):
@@ -72,18 +73,25 @@ def main():
     # define some constant
     # s:secret k:key num n:share num p:prime
     #
-    s = 1
-    k = 2
-    n = 3
-    p = 5
+    s = 12
+    k = 4
+    n = 11
+    p = 31
     random.seed(0)
 
     print(f'GF({p})')
+    #
+    # split secret
+    #
     server_id = generate_server_id(n, p)
     f_x = generate_polynomial(s, k, p)
-    w = create_share(server_id, f_x)
+    w = create_share(server_id, f_x, p)
+    #
+    # combine secret
+    #
     L = lagrange_interpolation(server_id, w, p)
-    print(f'L = {L} (= s)')
+
+    print(f'L = {L}')
     if s == L:
         print('success!')
     else:
