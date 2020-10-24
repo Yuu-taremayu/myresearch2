@@ -89,7 +89,18 @@ def main():
     #
     # combine secret
     #
-    L = lagrange_interpolation(server_id, w, p)
+    share_num = [i for i in range(n)]
+    random.shuffle(share_num)
+    for i in range(n - k):
+        share_num.pop(0)
+    print(f'using share number = {share_num}')
+    dataX = []
+    dataY = []
+    for i in share_num:
+        dataX.append(server_id[i])
+        dataY.append(w[i])
+
+    L = lagrange_interpolation(dataX, dataY, p)
 
     print(f'L = {L}')
     if s == L:
