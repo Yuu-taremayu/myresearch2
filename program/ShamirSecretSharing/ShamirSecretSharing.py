@@ -26,15 +26,15 @@ def generate_polynomial(secret, k, prime):
 # create share
 #
 def create_share(server_id, f_x, prime):
-    w = []
+    share = []
     for i in server_id:
-        share = 0
+        temp = 0
         for j in range(len(f_x)):
-            share += f_x[j] * i ** j
-        share %= prime
-        w.append(share)
-    print(f'shares = {w}')
-    return w
+            temp += f_x[j] * i ** j
+        temp %= prime
+        share.append(temp)
+    print(f'shares = {share}')
+    return share
 
 #
 # calculation of Lagrange Interpolation
@@ -99,12 +99,12 @@ def main():
     #
     server_id = generate_server_id(n, prime)
     f_x = generate_polynomial(secret, k, prime)
-    w = create_share(server_id, f_x, prime)
+    share = create_share(server_id, f_x, prime)
 
     #
     # combine secret
     #
-    dataX, dataY = choose_share(server_id, w, n, k)
+    dataX, dataY = choose_share(server_id, share, n, k)
     L = lagrange_interpolation(dataX, dataY, prime)
 
     print(f'L = {L}')
