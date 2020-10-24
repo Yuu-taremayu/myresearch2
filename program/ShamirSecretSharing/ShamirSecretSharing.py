@@ -68,27 +68,7 @@ def xgcd(a, b):
         g, y, x = xgcd(b % a, a)
         return g, x - (b // a) * y, y
 
-def main():
-    #
-    # define some constant
-    # s:secret k:key num n:share num p:prime
-    #
-    secret = 12
-    k = 4
-    n = 11
-    prime = 31
-    random.seed(0)
-
-    print(f'GF({prime})')
-    #
-    # split secret
-    #
-    server_id = generate_server_id(n, prime)
-    f_x = generate_polynomial(secret, k, prime)
-    w = create_share(server_id, f_x, prime)
-    #
-    # combine secret
-    #
+def choose_share(server_id, w, n, k):
     share_num = [i for i in range(n)]
     random.shuffle(share_num)
     for i in range(n - k):
@@ -99,7 +79,32 @@ def main():
     for i in share_num:
         dataX.append(server_id[i])
         dataY.append(w[i])
+    return dataX, dataY
 
+def main():
+    #
+    # define some constant
+    # ssecret:original secret  k:key num  n:share num  prime:prime
+    #
+    secret = 12
+    k = 4
+    n = 11
+    prime = 31
+    random.seed(0)
+
+    print(f'GF({prime})')
+
+    #
+    # split secret
+    #
+    server_id = generate_server_id(n, prime)
+    f_x = generate_polynomial(secret, k, prime)
+    w = create_share(server_id, f_x, prime)
+
+    #
+    # combine secret
+    #
+    dataX, dataY = choose_share(server_id, w, n, k)
     L = lagrange_interpolation(dataX, dataY, prime)
 
     print(f'L = {L}')
