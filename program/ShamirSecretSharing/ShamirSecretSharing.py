@@ -79,8 +79,6 @@ def choose_share(server_id, w, n, share_num):
     for i in use_share:
         dataX.append(server_id[i - 1])
         dataY.append(w[i - 1])
-        print(i)
-    print(dataX)
     return dataX, dataY
 
 def main():
