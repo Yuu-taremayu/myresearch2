@@ -69,7 +69,7 @@ def xgcd(a, b):
         return g, x - (b // a) * y, y
 
 def choose_share(server_id, w, n, k):
-    share_num = [i for i in range(n)]
+    share_num = [i for i in range(n - 1)]
     random.shuffle(share_num)
     for i in range(n - k):
         share_num.pop(0)
@@ -77,8 +77,10 @@ def choose_share(server_id, w, n, k):
     dataX = []
     dataY = []
     for i in share_num:
-        dataX.append(server_id[i])
-        dataY.append(w[i])
+        dataX.append(server_id[i - 1])
+        dataY.append(w[i - 1])
+        print(i)
+    print(dataX)
     return dataX, dataY
 
 def main():
@@ -104,7 +106,8 @@ def main():
     #
     # combine secret
     #
-    dataX, dataY = choose_share(server_id, share, n, k)
+    num = 123
+    dataX, dataY = choose_share(server_id, share, n, num)
     L = lagrange_interpolation(dataX, dataY, prime)
 
     print(f'L = {L}')
