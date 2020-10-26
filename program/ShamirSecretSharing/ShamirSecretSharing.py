@@ -53,6 +53,9 @@ def lagrange_interpolation(dataX, dataY, prime):
     L %= prime
     return L
 
+#
+# calculation of base polynomial for Lagrange Interpolation
+#
 def base_polynomial(data_num, i, x, dataX, prime):
     l = 1
     for k in range(data_num):
@@ -61,6 +64,9 @@ def base_polynomial(data_num, i, x, dataX, prime):
     l = l % prime
     return l
 
+#
+# calculation of inverse element on Galois Field
+#
 def xgcd(a, b):
     if a == 0:
         return b, 0, 1
@@ -68,6 +74,9 @@ def xgcd(a, b):
         g, y, x = xgcd(b % a, a)
         return g, x - (b // a) * y, y
 
+#
+# choose share randomly by the number of share_num and make list
+#
 def choose_share(server_id, w, n, share_num):
     use_share = [i for i in range(n - 1)]
     random.shuffle(use_share)
@@ -96,15 +105,17 @@ def main():
 
     #
     # split secret
+    # generate server id and n degree polynomial then calculate share
     #
     server_id = generate_server_id(n, prime)
     f_x = generate_polynomial(secret, k, prime)
     share = create_share(server_id, f_x, prime)
 
     #
-    # combine secret
+    # choose share and combine secret
+    # share_num:the number of share for interpolation
     #
-    share_num = 1
+    share_num = 10
     dataX, dataY = choose_share(server_id, share, n, share_num)
     L = lagrange_interpolation(dataX, dataY, prime)
 
