@@ -10,6 +10,7 @@ def create_share(secret, n):
         share.append(r)
     s = secret - sum(share)
     share.insert(0, s)
+    print(f'share = {share}')
     return share
 
 def combine_share(share):
@@ -28,7 +29,6 @@ def main():
     # disperse imformation
     #
     share = create_share(secret, n)
-    print(f'share = {share}')
 
     #
     # reconstruct imformation
