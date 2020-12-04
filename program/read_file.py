@@ -8,7 +8,16 @@ if __name__ == '__main__':
     print(HEX)
     print(HEX[0])
 
+    DEC = []
+    h = ''
+    t = ''
     for i in range(len(HEX)):
-        print(HEX[i], end='')
+        #print(HEX[i], end='')
+        h = hex(int(HEX[i], 16))
+        #print(h)
+        t += h[2:]
         if i % 4 == 3:
-            print()
+            #print(int('0x'+t, 16))
+            DEC.append(int('0x'+t, 16))
+            t = ''
+    print(DEC)
