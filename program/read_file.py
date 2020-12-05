@@ -5,8 +5,8 @@ if __name__ == '__main__':
             print(l, end='')
             #
             HEX += l
-    print(HEX)
-    print(HEX[0])
+    #print(HEX)
+    #print(HEX[0])
 
     DEC = []
     h = ''
@@ -20,4 +20,11 @@ if __name__ == '__main__':
             #print(int('0x'+t, 16))
             DEC.append(int('0x'+t, 16))
             t = ''
-    print(DEC)
+    #print(DEC)
+
+    re_HEX = ''
+    for i in range(len(DEC)):
+        a = str(format(DEC[i], 'x'))
+        #print(a)
+        re_HEX += a
+    print(re_HEX)
