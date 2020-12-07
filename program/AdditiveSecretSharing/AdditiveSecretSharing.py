@@ -40,7 +40,6 @@ def main():
     # reconstruct imformation
     #
     for i in range(len(shares)):
-        print(i)
         s = combine_share(shares[i])
         if secret[i] == s:
             print('success!')
