@@ -1,6 +1,6 @@
 import sys
 
-def file_to_int():
+def hex_to_int():
     if len(sys.argv) < 2:
         print('too few arguments.')
         sys.exit()
