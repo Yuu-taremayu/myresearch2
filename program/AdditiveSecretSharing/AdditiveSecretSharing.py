@@ -1,5 +1,6 @@
 import random
 import file_split as fs
+import file_output as fo
 
 #
 # create share
@@ -35,6 +36,13 @@ def main():
     shares = []
     for i in range(len(secret)):
         shares.append(create_share(secret[i], n))
+
+    temp = []
+    for i in range(len(shares[0])):
+        for j in range(len(shares)):
+            temp.append(shares[j][i])
+        fo.write_share(i + 1, temp)
+        temp = []
 
     #
     # reconstruct imformation
