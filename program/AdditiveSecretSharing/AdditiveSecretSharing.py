@@ -14,6 +14,9 @@ def create_share(_secret, _n):
     print(f'share = {share}')
     return share
 
+#
+# combine share
+#
 def combine_share(_share):
     s = sum(_share)
     return s
