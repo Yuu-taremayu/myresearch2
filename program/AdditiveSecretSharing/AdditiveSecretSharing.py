@@ -1,7 +1,8 @@
 import random
-import file_split as fs
-import file_output as fo
-import file_read as fr
+import file_split as fsplit
+import file_output as foutput
+import file_read as fread
+import file_reconst as freconst
 
 #
 # create share
@@ -27,12 +28,12 @@ def main():
     #
     # define some constant
     #
-    secret = fs.file_to_int()
+    secret = fsplit.hex_to_int()
     n = 10
     random.seed(0)
 
     #
-    # disperse imformation
+    # disperse imfoutputrmation
     #
     shares = []
     for i in range(len(secret)):
@@ -45,23 +46,27 @@ def main():
     for i in range(len(shares[0])):
         for j in range(len(shares)):
             temp.append(shares[j][i])
-        fo.write_share(i + 1, temp)
+        foutput.write_share(i + 1, temp)
         temp = []
 
     #
     # read file
     #
-    shares = fr.read_share(n)
+    shares = fread.read_share(n)
 
     #
-    # reconstruct imformation
+    # reconstruct imfoutputrmation
     #
+    re_s = []
     for i in range(len(shares)):
         s = combine_share(shares[i])
         if secret[i] == s:
             print('success!')
+            re_s.append(s)
         else:
             print('failed...')
+
+    freconst.int_to_hex(re_s)
 
 if __name__ == '__main__':
     main()
