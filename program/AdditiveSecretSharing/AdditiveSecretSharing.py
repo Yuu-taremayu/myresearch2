@@ -1,6 +1,7 @@
 import random
 import file_split as fs
 import file_output as fo
+import file_read as fr
 
 #
 # create share
@@ -48,16 +49,19 @@ def main():
         temp = []
 
     #
+    # read file
+    #
+    shares = fr.read_share(n)
+
+    #
     # reconstruct imformation
     #
     for i in range(len(shares)):
         s = combine_share(shares[i])
-        '''
         if secret[i] == s:
             print('success!')
         else:
             print('failed...')
-        '''
 
 if __name__ == '__main__':
     main()
