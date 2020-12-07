@@ -3,18 +3,18 @@ import random
 #
 # create share
 #
-def create_share(secret, n):
+def create_share(_secret, _n):
     share = []
-    for i in range(1, n):
+    for i in range(1, _n):
         r = random.randint(-(2**63-1), 2**63-1)
         share.append(r)
-    s = secret - sum(share)
+    s = _secret - sum(share)
     share.insert(0, s)
     print(f'share = {share}')
     return share
 
-def combine_share(share):
-    s = sum(share)
+def combine_share(_share):
+    s = sum(_share)
     return s
 
 def main():
