@@ -23,7 +23,6 @@ def main():
     # define some constant
     #
     secret = fs.file_to_int()
-    #secret = 13
     n = 10
     random.seed(0)
 
@@ -31,8 +30,8 @@ def main():
     # disperse imformation
     #
     shares = []
-    for i in secret:
-        shares.append(create_share(i, n))
+    for i in range(len(secret)):
+        shares.append(create_share(secret[i], n))
 
     #
     # reconstruct imformation
