@@ -11,7 +11,7 @@ def create_share(_secret, _n):
         share.append(r)
     s = _secret - sum(share)
     share.insert(0, s)
-    print(f'share = {share}')
+    #print(f'share = {share}')
     return share
 
 #
@@ -41,10 +41,12 @@ def main():
     #
     for i in range(len(shares)):
         s = combine_share(shares[i])
+        '''
         if secret[i] == s:
             print('success!')
         else:
             print('failed...')
+        '''
 
 if __name__ == '__main__':
     main()

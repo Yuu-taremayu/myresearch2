@@ -10,17 +10,18 @@ def file_to_int():
 
     file_name = sys.argv[1]
     HEX = ''
-    with open(file_name) as s:
+    with open(file_name, mode='r') as s:
         for l in s:
             HEX += l
 
+    size = 4
     DEC = []
     h = ''
     temp = ''
     for i in range(len(HEX)):
         h = hex(int(HEX[i], 16))
         temp += h[2:]
-        if i % 4 == 3:
+        if i % size == size - 1:
             DEC.append(int('0x'+temp, 16))
             temp = ''
 
