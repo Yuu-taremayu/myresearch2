@@ -37,6 +37,9 @@ def main():
     for i in range(len(secret)):
         shares.append(create_share(secret[i], n))
 
+    #
+    # write file
+    #
     temp = []
     for i in range(len(shares[0])):
         for j in range(len(shares)):
