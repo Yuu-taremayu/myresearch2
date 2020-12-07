@@ -1,4 +1,5 @@
 import random
+import file_split as fs
 
 #
 # create share
@@ -21,24 +22,28 @@ def main():
     #
     # define some constant
     #
-    secret = 13
+    secret = fs.file_to_int()
+    #secret = 13
     n = 10
     random.seed(0)
 
     #
     # disperse imformation
     #
-    share = create_share(secret, n)
+    shares = []
+    for i in secret:
+        shares.append(create_share(i, n))
 
     #
     # reconstruct imformation
     #
-    s = combine_share(share)
-
-    if secret == s:
-        print('success!')
-    else:
-        print('failed...')
+    for i in range(len(shares)):
+        print(i)
+        s = combine_share(shares[i])
+        if secret[i] == s:
+            print('success!')
+        else:
+            print('failed...')
 
 if __name__ == '__main__':
     main()
