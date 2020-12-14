@@ -33,7 +33,7 @@ def main():
     random.seed(0)
 
     #
-    # disperse imfoutputrmation
+    # disperse imformation
     #
     shares = []
     for i in range(len(secret)):
@@ -55,7 +55,7 @@ def main():
     shares = fread.read_share('Share', n)
 
     #
-    # reconstruct imfoutputrmation
+    # reconstruct imformation
     #
     re_s = []
     for i in range(len(shares)):
