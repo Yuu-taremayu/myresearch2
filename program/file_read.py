@@ -1,8 +1,8 @@
-def read_share(_n):
+def read_share(_name, _n):
     shares = []
     for i in range(_n):
         temp = []
-        filename = 'Share' + str(i + 1) + '.txt'
+        filename = str(_name) + str(i + 1) + '.txt'
         with open(filename, mode='r') as f:
             for l in f:
                 l = l[:-1]
