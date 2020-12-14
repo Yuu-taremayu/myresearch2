@@ -46,13 +46,13 @@ def main():
     for i in range(len(shares[0])):
         for j in range(len(shares)):
             temp.append(shares[j][i])
-        foutput.write_share(i + 1, temp)
+        foutput.write_share('Share', i + 1, temp)
         temp = []
 
     #
     # read file
     #
-    shares = fread.read_share(n)
+    shares = fread.read_share('Share', n)
 
     #
     # reconstruct imfoutputrmation
