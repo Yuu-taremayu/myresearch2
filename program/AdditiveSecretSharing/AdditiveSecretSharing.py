@@ -14,7 +14,6 @@ def create_share(_secret, _n):
         share.append(r)
     s = _secret - sum(share)
     share.insert(0, s)
-    #print(f'share = {share}')
     return share
 
 #
@@ -61,10 +60,8 @@ def main():
     for i in range(len(shares)):
         s = combine_share(shares[i])
         if secret[i] == s:
-            print('success!')
             re_s.append(s)
         else:
-            print('failed...')
 
     freconst.int_to_hex(re_s)
 
