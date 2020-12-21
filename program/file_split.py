@@ -14,7 +14,7 @@ def hex_to_int():
         for l in s:
             HEX += l
 
-    size = 4
+    size = 4 * 1
     DEC = []
     h = ''
     temp = ''
