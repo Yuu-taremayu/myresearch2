@@ -121,9 +121,9 @@ def main():
     #
     share_num = 10
     dataX, dataY = choose_share(server_id, shares, n + 1, share_num + 1)
-    L = lagrange_interpolation(dataX, dataY, prime)
-    print(f'L = {L}')
-    if secret == L:
+    s = lagrange_interpolation(dataX, dataY, prime)
+    print(f'reconstruct secret = {s}')
+    if secret == s:
         print('success!')
     else:
         print('failed...')

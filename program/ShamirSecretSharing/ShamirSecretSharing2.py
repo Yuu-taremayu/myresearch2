@@ -140,9 +140,9 @@ def main():
     #
     re_s = []
     for i in range(len(dataY)):
-        L = lagrange_interpolation(dataX, dataY[i], prime)
-        if secret[i] == L:
-            re_s.append(L)
+        s = lagrange_interpolation(dataX, dataY[i], prime)
+        if secret[i] == s:
+            re_s.append(s)
         else:
 
     freconst.int_to_hex(re_s)
