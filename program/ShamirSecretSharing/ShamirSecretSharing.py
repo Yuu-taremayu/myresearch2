@@ -82,14 +82,14 @@ def xgcd(_a, _b):
 # choose share randomly by the number of shareNum and make list
 #
 def choose_share(_serverId, _w, _n, _shareNum):
-    use_share = [i for i in range(_n - 1)]
-    random.shuffle(use_share)
+    useShare = [i for i in range(_n - 1)]
+    random.shuffle(useShare)
     for i in range(_n - _shareNum):
-        use_share.pop(0)
-    print(f'using share number = {use_share}')
+        useShare.pop(0)
+    print(f'using share number = {useShare}')
     dataX = []
     dataY = []
-    for i in use_share:
+    for i in useShare:
         dataX.append(_serverId[i - 1])
         dataY.append(_w[i - 1])
     return dataX, dataY
