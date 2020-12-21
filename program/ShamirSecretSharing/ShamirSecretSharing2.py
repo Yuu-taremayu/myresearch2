@@ -75,12 +75,12 @@ def xgcd(_a, _b):
         return g, x - (_b//_a)*y, y
 
 #
-# choose share randomly by the number of share_num and make list
+# choose share randomly by the number of shareNum and make list
 #
-def choose_share(serverId, w, n, share_num):
-    useShare = [i for i in range(n - 1)]
+def choose_share(_serverId, _w, _n, _shareNum):
+    useShare = [i for i in range(_n - 1)]
     random.shuffle(useShare)
-    for i in range(n - share_num):
+    for i in range(_n - _shareNum):
         useShare.pop(0)
     print(f'using share number = {useShare}')
     dataX = []
