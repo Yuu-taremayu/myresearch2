@@ -7,14 +7,14 @@ import file_reconst as freconst
 #
 # generate server ids
 #
-def generate_server_id(_n, _prime):
-    server_id = [i + 1 for i in range(_prime - 1)]
-    random.shuffle(server_id)
-    print(f'shuffled elements of GF({_prime}) without 0 = {server_id}')
+def generate_serverId(_n, _prime):
+    serverId = [i + 1 for i in range(_prime - 1)]
+    random.shuffle(serverId)
+    print(f'shuffled elements of GF({_prime}) without 0 = {serverId}')
     for i in range(_prime -_n):
-        server_id.pop(0)
-    print(f'server ids = {server_id}')
-    return server_id
+        serverId.pop(0)
+    print(f'server ids = {serverId}')
+    return serverId
 
 #
 # generate coefficient of polynomial
@@ -29,9 +29,9 @@ def generate_polynomial(_secret, _k, _prime):
 #
 # create share
 #
-def create_share(_server_id, _f_x, _prime):
+def create_share(_serverId, _f_x, _prime):
     share = []
-    for i in _server_id:
+    for i in _serverId:
         temp = 0
         for j in range(len(_f_x)):
             temp += _f_x[j] * i ** j
@@ -60,38 +60,38 @@ def lagrange_interpolation(_dataX, _dataY, _prime):
 #
 # calculation of base polynomial for Lagrange Interpolation
 #
-def base_polynomial(data_num, i, x, dataX, prime):
+def base_polynomial(_data_num, _i, _x, _dataX, _prime):
     l = 1
-    for k in range(data_num):
-        if i != k:
-            l *= x - dataX[k]
-    l = l % prime
+    for k in range(_data_num):
+        if _i != k:
+            l *= _x - _dataX[k]
+    l = l % _prime
     return l
 
 #
 # calculation of inverse element on Galois Field
 #
-def xgcd(a, b):
-    if a == 0:
-        return b, 0, 1
+def xgcd(_a, _b):
+    if _a == 0:
+        return _b, 0, 1
     else:
-        g, y, x = xgcd(b % a, a)
-        return g, x - (b // a) * y, y
+        g, y, x = xgcd(_b%_a, _a)
+        return g, x - (_b//_a)*y, y
 
 #
-# choose share randomly by the number of share_num and make list
+# choose share randomly by the number of shareNum and make list
 #
-def choose_share(server_id, w, n, share_num):
-    use_share = [i for i in range(n - 1)]
+def choose_share(_serverId, _w, _n, _shareNum):
+    use_share = [i for i in range(_n - 1)]
     random.shuffle(use_share)
-    for i in range(n - share_num):
+    for i in range(_n - _shareNum):
         use_share.pop(0)
     print(f'using share number = {use_share}')
     dataX = []
     dataY = []
     for i in use_share:
-        dataX.append(server_id[i - 1])
-        dataY.append(w[i - 1])
+        dataX.append(_serverId[i - 1])
+        dataY.append(_w[i - 1])
     return dataX, dataY
 
 def main():
@@ -111,16 +111,16 @@ def main():
     # split secret
     # generate server id and n degree polynomial then calculate share
     #
-    server_id = generate_server_id(n + 1, prime)
+    serverId = generate_serverId(n + 1, prime)
     f_x = generate_polynomial(secret, k, prime)
-    shares = create_share(server_id, f_x, prime)
+    shares = create_share(serverId, f_x, prime)
 
     #
     # choose share and combine secret
-    # share_num:the number of share for interpolation
+    # shareNum:the number of share for interpolation
     #
-    share_num = 10
-    dataX, dataY = choose_share(server_id, shares, n + 1, share_num + 1)
+    shareNum = 10
+    dataX, dataY = choose_share(serverId, shares, n + 1, shareNum + 1)
     s = lagrange_interpolation(dataX, dataY, prime)
     print(f'reconstruct secret = {s}')
     if secret == s:
