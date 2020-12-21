@@ -18,20 +18,20 @@ def generate_serverId(_n, _prime):
 # generate coefficient of polynomial
 #
 def generate_polynomial(_secret, _k, _prime):
-    f_x = [_secret]
+    fx = [_secret]
     for i in range(_k - 1):
-        f_x.append(random.randint(0, _prime - 1))
-    return f_x
+        fx.append(random.randint(0, _prime - 1))
+    return fx
 
 #
 # create share
 #
-def create_share(_serverId, _f_x, _prime):
+def create_share(_serverId, _fx, _prime):
     share = []
     for i in _serverId:
         temp = 0
-        for j in range(len(_f_x)):
-            temp += _f_x[j] * i ** j
+        for j in range(len(_fx)):
+            temp += _fx[j] * i ** j
         temp %= _prime
         share.append(temp)
     return share
@@ -105,12 +105,12 @@ def main():
     # split secret
     # generate server id and n degree polynomial then calculate share
     #
-    f_x = []
+    fx = []
     shares = []
     serverId = generate_serverId(n + 1, prime)
     for i in range(len(secret)):
-        f_x = generate_polynomial(secret[i], k, prime)
-        shares.append(create_share(serverId, f_x, prime))
+        fx = generate_polynomial(secret[i], k, prime)
+        shares.append(create_share(serverId, fx, prime))
 
     #
     # write file
