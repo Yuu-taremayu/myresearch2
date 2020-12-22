@@ -13,7 +13,7 @@ def generate_serverId(_n, _prime):
 #
 # generate coefficient of polynomial
 #
-def generate_polynomial(_secret, _k, _prime):
+def generate_polynomial(_secret, _k, _L, _prime):
     fx = [_secret]
     for i in range(_k-1):
         fx.append(random.randint(0, _prime-1))
@@ -102,7 +102,7 @@ def main():
     # generate server id and n degree polynomial then calculate share
     #
     serverId = generate_serverId(n+1, prime)
-    fx = generate_polynomial(secret, k, prime)
+    fx = generate_polynomial(secret, k, L, prime)
     shares = create_share(serverId, fx, prime)
 
     #
