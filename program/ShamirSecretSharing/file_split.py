@@ -13,6 +13,7 @@ def hex_to_int():
     with open(file_name, mode='r') as s:
         for l in s:
             HEX += l
+    HEX = HEX.replace('\n', '')
 
     size = 4
     DEC = []
