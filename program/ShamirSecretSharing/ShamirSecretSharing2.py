@@ -143,8 +143,7 @@ def main():
         s = lagrange_interpolation(dataX, dataY[i], prime)
         if secret[i] == s:
             re_s.append(s)
-        else:
-            freconst.int_to_hex(re_s)
+    freconst.int_to_hex(re_s)
 
 if __name__ == '__main__':
     main()
