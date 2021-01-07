@@ -1,4 +1,5 @@
 import random
+from sympy import Matrix
 
 #
 # generate server ids
@@ -14,9 +15,19 @@ def generate_serverId(_n, _prime):
 # generate coefficient of polynomial
 #
 def generate_polynomial(_secret, _k, _L, _prime):
-    fx = [_secret]
-    for i in range(_k-1):
+    secBit = format(_secret, 'b')
+    bitLen = len(secBit)
+    if bitLen%4 != 0:
+        secBit = format(_secret, '0' + str(bitLen + (4 - bitLen%4)) + 'b')
+        bitLen = len(secBit)
+    fx = []
+    for i in range(_L):
+        temp = secBit[i*int(bitLen/_L):(i+1)*int(bitLen/_L)]
+        print(temp)
+        fx.append(int(temp, 2))
+    for i in range(_L, _k-1):
         fx.append(random.randint(0, _prime-1))
+    print('f(x) =', fx)
     return fx
 
 #
@@ -32,43 +43,24 @@ def create_share(_serverId, _fx, _prime):
         share.append(temp)
     return share
 
-#
-# calculation of Lagrange Interpolation
-#
-def lagrange_interpolation(_dataX, _dataY, _prime):
-    dataNum = len(_dataX)
-    x = 0
-    l = 0
-    L = 0
-    for i in range(dataNum):
-        l1 = base_polynomial(dataNum, i, x, _dataX, _prime)
-        l2 = base_polynomial(dataNum, i, _dataX[i], _dataX, _prime)
-        temp1, l2Inv, temp2 = xgcd(l2, _prime)
-        l = l1*l2Inv
-        L += _dataY[i]*l
-    L %= _prime
-    return L
+def reconst_secret(_dataX, _dataY, _prime, _k, _L):
+    num = len(_dataX)
+    xList = []
+    for x in _dataX:
+        for i in range(num):
+            xList.append((x ** i) % _prime)
+    xMat = Matrix(num, num, xList)
+    yMat = Matrix(num, 1, _dataY)
+    xMat = xMat.inv_mod(_prime)
+    ansMat = (xMat * yMat) % _prime
+    print(ansMat)
 
-#
-# calculation of base polynomial for Lagrange Interpolation
-#
-def base_polynomial(_dataNum, _i, _x, _dataX, _prime):
-    l = 1
-    for k in range(_dataNum):
-        if _i != k:
-            l *= _x - _dataX[k]
-    l = l%_prime
-    return l
-
-#
-# calculation of inverse element on Galois Field
-#
-def xgcd(_a, _b):
-    if _a == 0:
-        return _b, 0, 1
-    else:
-        g, y, x = xgcd(_b%_a, _a)
-        return g, x - (_b//_a)*y, y
+    bit = ''
+    for i in range(_L):
+        temp = format(int(ansMat[i]), 'b')
+        bit += temp
+    secret = int(bit, 2)
+    return secret
 
 #
 # choose share randomly by the number of shareNum and make list
@@ -90,7 +82,7 @@ def main():
     # define some constant
     # secret:original secret  k:key num  n:share num  prime:prime
     #
-    secret = 12
+    secret = 255
     k = 4
     L = 2
     n = 11
@@ -111,7 +103,7 @@ def main():
     #
     shareNum = 10
     dataX, dataY = choose_share(serverId, shares, n+1, shareNum+1)
-    s = lagrange_interpolation(dataX, dataY, prime)
+    s = reconst_secret(dataX, dataY, prime, k, L)
 
     if secret == s:
         print('success!')
