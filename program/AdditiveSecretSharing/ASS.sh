@@ -1,13 +1,13 @@
 #! /bin/zsh
 
-if [ $# -eq 2 ]; then
+if [ $# -eq 1 ]; then
+	FILE1="secret.hex"
 	if [ -e $1 ]; then
-		xxd -p $1 > secret.hex
+		xxd -p $1 > ${FILE1}
 	else
 		echo "Error occurred.(1)"
 	fi
 
-	FILE1="secret.hex"
 	if [ -e $FILE1 ]; then
 		pyexe=$(/home/yu_pippi/.pyenv/versions/3.7.9/bin/python3 /home/yu_pippi/myresearch2/program/AdditiveSecretSharing/AdditiveSecretSharing.py ${FILE1})
 		echo $pyexe
@@ -25,7 +25,7 @@ if [ $# -eq 2 ]; then
 	fi
 
 	if [ -e $FILE3 ]; then
-		diff -q $1 ${FILE3}
+		diff -s $1 ${FILE3}
 	else
 		echo "Error occurred.(4)"
 	fi
