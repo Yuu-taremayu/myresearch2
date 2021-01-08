@@ -89,7 +89,6 @@ def main():
     # secret:original secret  k:key num  n:share num  prime:prime
     #
     secret = fsplit.hex_to_int()
-    print('secret =', secret[0])
     k = 4
     L = 2
     n = 11
@@ -103,13 +102,9 @@ def main():
     fx = []
     shares = []
     serverId = generate_serverId(n+1, prime)
-    print('server id =', serverId)
     for i in range(len(secret)):
         fx = generate_polynomial(secret[i], k, L, prime)
         shares.append(create_share(serverId, fx, prime))
-        if i == 0:
-            print('fx =', fx)
-            print('shares =', shares)
 
     #
     # write file
@@ -134,30 +129,15 @@ def main():
             temp.append(shares[i][j])
         dataY.append(temp)
     
-    print('dataX(choosen server id) =', dataX)
-    print('dataY =', dataY[0])
     #
     # reconstruct information
     #
     re_s = []
     for i in range(len(dataY)):
-        print(i)
         s = reconst_secret(dataX, dataY[i], prime, k, L)
         if secret[i] == s:
-            print('success')
             re_s.append(s)
-        else:
-            print('faild')
     freconst.int_to_hex(re_s)
-    '''
-    s = reconst_secret(dataX, dataY[0], prime, k, L)
-    if secret[0] == s:
-        print('success')
-        re_s.append(s)
-    else:
-        print('faild')
-    freconst.int_to_hex(re_s)
-    '''
 
 if __name__ == '__main__':
     main()
