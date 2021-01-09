@@ -1,5 +1,7 @@
 #! /bin/zsh
 
+source ~/.zshrc
+
 if [ $# -eq 1 ]; then
 	FILE1="secret.hex"
 	if [ -e $1 ]; then
