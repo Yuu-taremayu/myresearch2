@@ -1,0 +1,190 @@
+%% v3.0 [2011/03/08]
+%% 1. 和文「論文」（「解説」を含む）
+%% 2. 和文「研究開発レター」
+%% 3. 英文「論文/研究開発レター」
+%% 4. 英文「Extended Summary」
+%%   の各タイプ別のテンプレートです
+
+%% 1. 和文「論文」用テンプレート
+\documentclass[usejistfm]{ieej}
+\usepackage{graphicx}
+%\usepackage[fleqn]{amsmath}
+\usepackage[varg]{txfonts}
+
+\FIELD{}
+\YEAR{2011}
+\NO{1}
+\jtitle{}
+%\jtitle[]{}
+\etitle{}
+\authorlist{%
+ \authorentry{}{}{}{}
+% \authorentry{}{}{}{}
+% \authorentry{}{}{}{}
+}
+\affiliate[]{ \\ }{ \\ }
+%\affiliate[]{ \\ }{ \\ }
+%\affiliate[]{ \\ }{ \\ }
+
+%\received{}{}{}
+%\revised{}{}{}
+
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\begin{jkeyword}
+
+\end{jkeyword}
+\begin{ekeyword}
+
+\end{ekeyword}
+\maketitle
+
+\section{}
+
+
+\begin{thebibliography}{99}% 文献が10以上のとき99，10未満のとき9
+\bibitem{}
+\bibitem{}
+\end{thebibliography}
+
+\appendix
+\section{}
+
+\begin{biography}
+\profile{}{}{}
+%\profile{}{}{}
+%\profile*{}{}{}
+\end{biography}
+\end{document}
+
+
+%% 2. 和文「研究開発レター」用テンプレート
+\documentclass[usejistfm,letter]{ieej}
+\usepackage{graphicx}
+%\usepackage[fleqn]{amsmath}
+\usepackage[varg]{txfonts}
+
+\FIELD{}
+\YEAR{2011}
+\NO{1}
+\jtitle{}
+%\jtitle[]{}
+\etitle{}
+\authorlist{%
+ \authorentry{}{}{}{}
+% \authorentry{}{}{}{}
+% \authorentry{}{}{}{}
+}
+\affiliate[]{ \\ }{ \\ }
+%\affiliate[]{ \\ }{ \\ }
+%\affiliate[]{ \\ }{ \\ }
+
+%\received{}{}{}
+%\revised{}{}{}
+
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\begin{jkeyword}
+
+\end{jkeyword}
+\begin{ekeyword}
+
+\end{ekeyword}
+\maketitle
+
+\section{}
+
+
+\begin{thebibliography}{99}% 文献が10以上のとき99，10未満のとき9
+\bibitem{}
+\bibitem{}
+\end{thebibliography}
+
+\appendix
+\section{}
+
+\begin{biography}
+\profile{}{}{}
+%\profile{}{}{}
+%\profile*{}{}{}
+\end{biography}
+\end{document}
+
+
+%% 3. 英文「論文/研究開発レター」用テンプレート
+\documentclass[english]{ieej}
+%\documentclass[english,letter]{ieej}
+\usepackage{graphicx}
+%\usepackage[fleqn]{amsmath}
+\usepackage[varg]{txfonts}
+
+\FIELD{}
+\YEAR{2011}
+\NO{1}
+\title[]{}
+\authorlist{%
+ \authorentry{}{}{}
+% \authorentry{}{}{}
+% \authorentry{}{}{}
+}
+\affiliate[]{ \\ }
+%\affiliate[]{ \\ }
+%\affiliate[]{ \\ }
+
+%\received{}{}{}
+%\revised{}{}{}
+
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\begin{keyword}
+
+\end{keyword}
+\maketitle
+
+\section{}
+
+
+\begin{thebibliography}{99}% 文献が10以上のとき99，10未満のとき9
+\bibitem{}
+\bibitem{}
+\end{thebibliography}
+
+\appendix
+\section{}
+
+\begin{biography}
+\profile{}{}{}
+%\profile{}{}{}
+%\profile{}{}{}
+\end{biography}
+\end{document}
+
+
+%% 4. 英文「Extended Summary」用テンプレート
+\documentclass[english,ExtendedSummary]{ieej}
+\usepackage{graphicx}
+%\usepackage{latexsym}
+%\usepackage[fleqn]{amsmath}
+\usepackage[varg]{txfonts}
+
+\title{}
+\authorlist{%
+ \authorentry{}{}{}
+% \authorentry{}{}{}
+}
+\affiliate[]{}
+%\affiliate[]{}
+
+\begin{document}
+\begin{keyword}
+% keyword list
+\end{keyword}
+\maketitle
+
+\end{document}
