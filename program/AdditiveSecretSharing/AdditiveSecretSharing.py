@@ -28,7 +28,7 @@ def main():
     # define some constant
     #
     secret = fsplit.hex_to_int()
-    n = 10
+    n = 11
     random.seed(0)
 
     #
