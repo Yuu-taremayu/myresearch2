@@ -1,0 +1,28 @@
+% ls -la            
+total 7860
+drwxr-xr-x 3 yu_pippi yu_pippi   4096 Jan  9 15:24 ./
+drwxr-xr-x 9 yu_pippi yu_pippi 348160 Jan  7 23:25 ../
+-rw-r--r-- 1 yu_pippi yu_pippi    214 Dec 10 16:56 file_output.py
+-rw-r--r-- 1 yu_pippi yu_pippi    403 Dec 10 17:01 file_read.py
+-rw-r--r-- 1 yu_pippi yu_pippi    201 Dec 10 16:09 file_reconst.py
+-rw-r--r-- 1 yu_pippi yu_pippi    602 Jan  7 22:56 file_split.py
+drwxr-xr-x 2 yu_pippi yu_pippi   4096 Jan  7 22:56 __pycache__/
+-rw-r--r-- 1 yu_pippi yu_pippi 406667 Jan  9 15:23 secret.hex
+-rw-r--r-- 1 yu_pippi yu_pippi 400000 Jan  9 15:23 secret_reconst.hex
+-rw-r--r-- 1 yu_pippi yu_pippi 200000 Jan  9 15:23 secret_reconst.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 200000 Jan  8 23:44 secret.txt
+-rw-r--r-- 1 yu_pippi yu_pippi   3472 Jan  8 22:22 ShamirSecretSharing2.py
+-rw-r--r-- 1 yu_pippi yu_pippi   3032 Dec 21 22:30 ShamirSecretSharing.py
+-rw-r--r-- 1 yu_pippi yu_pippi 583140 Jan  9 15:23 Share10.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 583065 Jan  9 15:23 Share11.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582751 Jan  9 15:23 Share1.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 583128 Jan  9 15:23 Share2.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582917 Jan  9 15:23 Share3.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 583339 Jan  9 15:23 Share4.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582949 Jan  9 15:23 Share5.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582983 Jan  9 15:23 Share6.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582998 Jan  9 15:23 Share7.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582995 Jan  9 15:23 Share8.txt
+-rw-r--r-- 1 yu_pippi yu_pippi 582921 Jan  9 15:23 Share9.txt
+-rw-r--r-- 1 yu_pippi yu_pippi    264 Jan  9 15:24 SSS_result.txt
+-rwxr-xr-x 1 yu_pippi yu_pippi    796 Jan  9 14:58 SSS.sh*
