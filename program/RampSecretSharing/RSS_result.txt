@@ -1,0 +1,14 @@
+% ./RSS.sh secret.txt
+Succeeded convert to hex.
+
+===============
+CPU	:99%
+user	:35:43.53s
+system	:0.093s
+total	:35:45.62s
+===============
+
+Succeeded Secret Sharing.
+Succeeded convert to text.
+Files secret.txt and secret_reconst.txt are identical
+Succeeded reconstruct.
