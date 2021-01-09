@@ -1,0 +1,14 @@
+% ./SSS.sh secret.txt 
+Succeeded convert to hex.
+
+===============
+CPU	:99%
+user	:6.888s
+system	:0.063s
+total	:6.956s
+===============
+
+Succeeded Secret Sharing.
+Succeeded convert to text.
+Files secret.txt and secret_reconst.txt are identical
+Succeeded reconstruct.
