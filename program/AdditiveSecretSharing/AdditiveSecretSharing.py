@@ -10,7 +10,7 @@ import file_reconst as freconst
 def create_share(_secret, _n):
     share = []
     for i in range(1, _n):
-        r = random.randint(-(2**63-1), 2**63-1)
+        r = random.randint(-(2**16-1), 2**16-1)
         share.append(r)
     s = _secret - sum(share)
     share.insert(0, s)
