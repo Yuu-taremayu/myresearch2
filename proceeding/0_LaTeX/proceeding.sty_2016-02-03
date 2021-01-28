@@ -3,32 +3,32 @@
 \usepackage[dvips]{graphicx}
 
 
-%%% $B%l%$%"%&%H!JM>Gr$N@_Dj!K!%(B
-%%% $B%G%U%)%k%H$N(B1 $B%$%s%A$N%*%U%;%C%H$rBG$A>C$9!%(B
+%%% レイアウト（余白の設定）．
+%%% デフォルトの1 インチのオフセットを打ち消す．
 \setlength{\voffset}{-1truein}
 \setlength{\hoffset}{-1truein}
-%%% $B>eM>Gr!%(B
+%%% 上余白．
 \setlength{\topmargin}{28truemm}
 \setlength{\headheight}{0truemm}
 \setlength{\headsep}{0truemm}
-%%% $B:8M>Gr!%(B
+%%% 左余白．
 \setlength{\oddsidemargin}{20truemm}
 \setlength{\evensidemargin}{20truemm}
-%%% $BMQ;f%5%$%:!%(B
+%%% 用紙サイズ．
 \setlength{\textwidth}{169truemm}
 \setlength{\textheight}{245truemm}
-%%% $BCJ4V!%(B
+%%% 段間．
 \setlength{\columnsep}{8truemm}
-%%% $B9T4V!%(B
+%%% 行間．
 \renewcommand{\baselinestretch}{0.90}
 
-%%% $BJ8;z4V3V(B
+%%% 文字間隔
 %%% http://rakasaka.fc2web.com/tex/tex.html
 \kanjiskip=.1zw plus 1pt minus 1pt
 \xkanjiskip=.1zw plus 1pt minus 1pt
 
 
-%% $BH/I=%?%$%H%k$HH/I=<T(B
+%% 発表タイトルと発表者
 \newenvironment{Center}{%
   \topsep=0pt \partopsep=0pt%
   \trivlist \centering\item\relax}{%
@@ -37,11 +37,11 @@
 \def\maketitle{%
   \twocolumn[
     \vspace*{2mm}
-    %% $B%?%$%H%k$,D9$/$FH/I=HV9f$,=E$J$k>l9g!$0J2<$N(B2$B$D$N9T$rM-8z$K$7$F!$(B
-    %% $B$:$i$9!%(B
-    %% \vspace*{-\baselineskip}  %% $B%?%$%H%k$,D9$$>l9g!$M-8z$K!%(B
+    %% タイトルが長くて発表番号が重なる場合，以下の2つの行を有効にして，
+    %% ずらす．
+    %% \vspace*{-\baselineskip}  %% タイトルが長い場合，有効に．
     {\Large \bfseries \@date}
-    %% \vspace*{\baselineskip}  %% $B%?%$%H%k$,D9$$>l9g!$M-8z$K!%(B
+    %% \vspace*{\baselineskip}  %% タイトルが長い場合，有効に．
     \begin{Center}
      \vspace*{-\baselineskip}
      {\Large \bfseries \@title}
@@ -55,9 +55,9 @@
 }
 
 
-%%% $B>O8+=P$7$NJQ99!%(B
-%%% $B>OHV9f$N8e$m$K%I%C%H$rIU$9!%(B
-%% \thesection $B$r=$@5$9$k$H!$(B\ref{} $B$J$I$K$b1F6A$7$F$7$^$&!%(B
+%%% 章見出しの変更．
+%%% 章番号の後ろにドットを付す．
+%% \thesection を修正すると，\ref{} などにも影響してしまう．
 \makeatletter
 \def\section{%
   \@startsection {section}{1}{\z@}%
@@ -70,8 +70,8 @@
 \makeatother
 
 
-%%% $BB@@~$NDj5A!%(B
-%%% 2pt $B$N$H$3$m$,B@$5!%(B
+%%% 太線の定義．
+%%% 2pt のところが太さ．
 \makeatletter
 \def\Hline{%
  \noalign{\ifnum0=`}\fi\hrule \@height 2pt \futurelet
@@ -79,7 +79,7 @@
 \makeatother
 
 
-%%% $B2U>r=q$-$N5-9f$NJQ99(B
+%%% 箇条書きの記号の変更
 \def\labelitemi{$\bullet$}
 %% \def\labelitemii{\bf --}
 \def\labelitemii{\bf $\circ$}
@@ -88,16 +88,16 @@
 
 
 
-%%% thebibliography $B4D6-$N:FDj5A!%(B
-%%% $B9`L\4V$N4V3V$r$J$/$9!%(B
+%%% thebibliography 環境の再定義．
+%%% 項目間の間隔をなくす．
 \makeatletter
 \renewenvironment{thebibliography}[1]
 {\section*{\refname\@mkboth{\refname}{\refname}}%
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\settowidth\labelwidth{\@biblabel{#1}}%
-         \itemsep\z@% $B$3$N9T$rDI2C(B
-         \parsep\z@%  $B$3$N9T$bDI2C(B
-	 %% $BJ8;z4V3V(B
+         \itemsep\z@% この行を追加
+         \parsep\z@%  この行も追加
+	 %% 文字間隔
 	 \kanjiskip=0zw plus 0pt minus 0pt
 	 \xkanjiskip=0zw plus 0pt minus 0pt
 	 %%
@@ -117,16 +117,16 @@
    \endlist}
 \makeatother
 
-%% $B%-%c%W%7%g%s$N4V$N%3%m%s$r$J$/$9!%(B
+%% キャプションの間のコロンをなくす．
 \usepackage{ccaption}
 \captiondelim{\hspace{0.75zw}}
 
 
-%%% $B%k%S$r?6$k$H$-$O!$(B\usepackage{okumacro} $B$r5-=R$9$k!%(B
-%%% $B;H$$J}(B
-%%% \ruby{$B=VL\(B}{$B$7$e$s$\$/(B}
-%%% $B$3$l",$G$b$h$$$,!$J,$1$?J}$,$h$jH~$7$$%P%i%s%9$H$J$k!%(B
-%%% \ruby{$B=V(B}{$B$7$e$s(B}\ruby{$BL\(B}{$B$\$/(B}
+%%% ルビを振るときは，\usepackage{okumacro} を記述する．
+%%% 使い方
+%%% \ruby{瞬目}{しゅんぼく}
+%%% これ↑でもよいが，分けた方がより美しいバランスとなる．
+%%% \ruby{瞬}{しゅん}\ruby{目}{ぼく}
 
 
 %% \begin{namelist}{LeftmarginWidth}
