@@ -1,8 +1,0 @@
-%このファイルは日本語文字を含みます.
-\BOOKMARK [1][-]{section.1}{まえがき}{}% 1
-\BOOKMARK [1][-]{section.2}{秘密分散法について}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{加法的秘密分散法}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{\(k,n\)しきい値秘密分散法}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{\(k,L,n\)しきい値秘密分散法}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{実装について}{}% 6
-\BOOKMARK [1][-]{section.4}{結果・考察}{}% 7
