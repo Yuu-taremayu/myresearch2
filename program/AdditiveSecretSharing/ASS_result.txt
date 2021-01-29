@@ -3,9 +3,9 @@ Succeeded convert to hex.
 
 ===============
 CPU	:99%
-user	:3.076s
-system	:0.067s
-total	:3.145s
+user	:2.607s
+system	:0.093s
+total	:2.714s
 ===============
 
 Succeeded Secret Sharing.
