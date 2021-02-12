@@ -34,6 +34,9 @@ if [ $# -eq 1 ]; then
 	else
 		echo "Error occurred.(4)"
 	fi
+
+	ls -la | grep 'Share' | cut -d ' ' -f 5 > sharesize_sum.txt
+	awk '{ s += $size }; END { print "sum="s"[KB],", "average="s/NR"[KB]"}' < sharesize_sum.txt
 else
 	echo "usage: ./SSS.sh [file]"
 fi
