@@ -1,0 +1,10 @@
+# Fdb version 3
+["latex"] 1613111611 "paper.tex" "paper.dvi" "paper" 1613111611
+  "/usr/share/texmf-dist/tex/platex/jsclasses/jsreport.cls" 1607186860 63450 2584ea6af86e9cc49dffcc562e579515 ""
+  "/usr/share/texmf-dist/web2c/texmf.cnf" 1607249373 33301 a3134070eacafb10b1f371612ce2650d ""
+  "/var/lib/texmf/web2c/pdftex/latex.fmt" 1609332601 2635839 bb126ebe7d33c7047d681baf30c75672 ""
+  "paper.aux" 1613111507 5129 cf778e6973e6dd1a71a40c909f5eb67f ""
+  "paper.tex" 1613111605 18006 0b9f391c0c68b1b408ef517c7ba8a07b ""
+  (generated)
+  "paper.dvi"
+  "paper.log"
